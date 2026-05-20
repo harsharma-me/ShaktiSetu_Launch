@@ -380,21 +380,13 @@
             <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Step into a safer tomorrow, today.</h2>
             <p class="mt-4 text-brand-100 max-w-xl mx-auto text-lg">Join thousands of women who navigate their daily life with absolute peace of mind.</p>
             <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <!-- App Store Placeholders as styled buttons -->
-                <button onclick="analyticsTrack('download_ios')" class="bg-black hover:bg-neutral-900 transition text-white px-6 py-3 rounded-xl flex items-center text-left gap-3 border border-neutral-700 w-48">
-                    <i data-lucide="smartphone" class="w-6 h-6"></i>
+                <a href="app.apk" download aria-label="Download ShaktiSetu APK file" onclick="analyticsTrack('download_apk')" class="bg-black hover:bg-neutral-900 transition text-white px-6 py-3 rounded-xl flex items-center text-left gap-3 border border-neutral-700 w-48">
+                    <i data-lucide="download" class="w-6 h-6"></i>
                     <div>
-                        <p class="text-[10px] text-gray-400 uppercase">Download on the</p>
-                        <p class="text-sm font-bold -mt-0.5">App Store</p>
+                        <p class="text-[10px] text-gray-400 uppercase">Direct Download</p>
+                        <p class="text-sm font-bold -mt-0.5">Download APK</p>
                     </div>
-                </button>
-                <button onclick="analyticsTrack('download_android')" class="bg-black hover:bg-neutral-900 transition text-white px-6 py-3 rounded-xl flex items-center text-left gap-3 border border-neutral-700 w-48">
-                    <i data-lucide="play" class="w-6 h-6"></i>
-                    <div>
-                        <p class="text-[10px] text-gray-400 uppercase">Get it on</p>
-                        <p class="text-sm font-bold -mt-0.5">Google Play</p>
-                    </div>
-                </button>
+                </a>
             </div>
         </div>
         <div class="absolute inset-0 bg-radial-gradient from-brand-600 to-brand-800 opacity-50 pointer-events-none"></div>
