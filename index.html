@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShaktiSetu — Your Safety, Your Community, Your Power</title>
-    <link rel="icon" type="image/svg+xml" href="file:///C:/Users/harsh/Downloads/logo.png">
     <meta name="description" content="ShaktiSetu connects women with instant emergency support, safe-route navigation, and a trusted community network. Download now for peace of mind.">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="ShaktiSetu — Empowering Women's Safety & Community">
@@ -18,7 +17,10 @@
     <meta property="twitter:title" content="ShaktiSetu — Empowering Women's Safety">
     <meta property="twitter:description" content="Instant emergency alerts, verified safe routes, and a powerful network of women.">
 
-
+    <!-- Premium Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,17 +28,31 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
-                            50: '#fdf4f5',
-                            100: '#fbe8eb',
-                            500: '#9d2242', /* Deep empowering plum/burgundy */
-                            600: '#821a35',
-                            700: '#671329',
+                            50:  '#fdf2f5',
+                            100: '#fbe6eb',
+                            200: '#f5c0cc',
+                            500: '#c0274f',
+                            600: '#a01f41',
+                            700: '#7d1633',
                         },
                         accent: {
-                            500: '#f97316', /* Warm coral for CTAs */
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
                         }
+                    },
+                    boxShadow: {
+                        'glow-brand': '0 0 30px 6px rgba(192,39,79,0.25)',
+                        'glow-amber': '0 0 30px 8px rgba(245,158,11,0.40)',
+                        'glow-amber-lg': '0 0 50px 16px rgba(245,158,11,0.35)',
+                    },
+                    backgroundImage: {
+                        'mesh-hero': 'radial-gradient(at 20% 30%, rgba(192,39,79,0.12) 0px, transparent 55%), radial-gradient(at 80% 10%, rgba(245,158,11,0.10) 0px, transparent 50%), radial-gradient(at 50% 80%, rgba(192,39,79,0.07) 0px, transparent 55%)',
                     }
                 }
             }
@@ -44,124 +60,258 @@
     </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Inline Custom Styles for Transitions -->
+
     <style>
+        /* ── FAQ Accordion ── */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
         }
-        .faq-active .faq-answer {
-            max-height: 200px;
+        .faq-active .faq-answer { max-height: 240px; }
+        .faq-active .faq-icon   { transform: rotate(180deg); }
+        .faq-icon { transition: transform 0.3s ease; }
+
+        /* ── Download button glow pulse ── */
+        @keyframes amber-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.55), 0 8px 32px rgba(245,158,11,0.35); }
+            50%       { box-shadow: 0 0 0 10px rgba(245,158,11,0), 0 8px 32px rgba(245,158,11,0.20); }
         }
-        .faq-active .faq-icon {
-            transform: rotate(180deg);
+        .btn-download-glow {
+            animation: amber-pulse 2.2s ease-in-out infinite;
         }
+
+        /* ── Floating badge ring ── */
+        @keyframes ring-spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        .ring-spin { animation: ring-spin 8s linear infinite; }
+
+        /* ── Scroll-reveal utility ── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Glass card ── */
+        .glass {
+            background: rgba(255,255,255,0.70);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.55);
+        }
+
+        /* ── Gradient text ── */
+        .grad-text {
+            background: linear-gradient(135deg, #c0274f 0%, #e8547a 60%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── Mesh background ── */
+        .bg-mesh {
+            background-color: #fff8f9;
+            background-image:
+                radial-gradient(at 18% 28%, rgba(192,39,79,0.13) 0px, transparent 55%),
+                radial-gradient(at 82% 12%, rgba(245,158,11,0.10) 0px, transparent 50%),
+                radial-gradient(at 50% 85%, rgba(192,39,79,0.08) 0px, transparent 55%);
+        }
+
+        /* ── Nav blur scroll ── */
+        .nav-scrolled { background: rgba(255,255,255,0.96) !important; box-shadow: 0 1px 20px rgba(0,0,0,0.07); }
+
+        /* Stat counter shimmer */
+        @keyframes shimmer {
+            0% { background-position: -400px 0; }
+            100% { background-position: 400px 0; }
+        }
+        .shimmer-text {
+            background: linear-gradient(90deg, #c0274f 0%, #f59e0b 40%, #c0274f 80%);
+            background-size: 400px 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3.5s linear infinite;
+        }
+
+        /* Floating blob shapes */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50%       { transform: translateY(-18px) scale(1.03); }
+        }
+        .float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+        /* Smooth scrollbar */
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c0274f; border-radius: 3px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+<body class="bg-white text-gray-900 font-sans antialiased">
 
     <!-- Analytics Hook Placeholder -->
     <script>
         window.analyticsTrack = function(eventName, properties) {
             console.log(`[Analytics Block] Event: ${eventName}`, properties);
-            // Integration Example:
-            // ga('send', 'event', eventName, properties);
         };
     </script>
 
     <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center space-x-2">
-        <div class="bg-brand-500 text-white p-2 rounded-xl">
-            <i data-lucide="shield" class="w-6 h-6"></i>
-        </div>
-                <span class="text-xl font-bold tracking-tight text-brand-700">ShaktiSetu</span>
+    <header id="main-header" class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[70px] flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2.5 group">
+                <div class="bg-gradient-to-br from-brand-500 to-brand-700 text-white p-2 rounded-xl shadow-md group-hover:shadow-glow-brand transition-shadow duration-300">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-gray-900">Shakti<span class="text-brand-500">Setu</span></span>
             </a>
-            <nav class="hidden md:flex space-x-8 font-medium text-gray-600">
-                <a href="#features" class="hover:text-brand-500 transition">Features</a>
-                <a href="#how-it-works" class="hover:text-brand-500 transition">How It Works</a>
-                <a href="#pricing" class="hover:text-brand-500 transition">Pricing</a>
-                <a href="#faq" class="hover:text-brand-500 transition">FAQ</a>
+            <nav class="hidden md:flex space-x-7 font-semibold text-gray-500 text-sm">
+                <a href="#features" class="hover:text-brand-500 transition-colors duration-200">Features</a>
+                <a href="#how-it-works" class="hover:text-brand-500 transition-colors duration-200">How It Works</a>
+                <a href="#pricing" class="hover:text-brand-500 transition-colors duration-200">Pricing</a>
+                <a href="#faq" class="hover:text-brand-500 transition-colors duration-200">FAQ</a>
             </nav>
             <div class="hidden md:block">
-                <a href="#download" onclick="analyticsTrack('nav_cta_clicked')" class="bg-brand-500 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-brand-600 transition shadow-sm">Download App</a>
+                <a href="#download" onclick="analyticsTrack('nav_cta_clicked')"
+                   class="inline-flex items-center gap-2 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-md hover:shadow-glow-amber transition-all duration-300 hover:-translate-y-0.5">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download App
+                </a>
             </div>
-            <!-- Mobile Menu Toggle Button -->
-            <button class="md:hidden text-gray-700" id="mobile-menu-btn" aria-label="Toggle Menu">
+            <button class="md:hidden text-gray-700 p-1.5" id="mobile-menu-btn" aria-label="Toggle Menu">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
         <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
-            <a href="#features" class="block py-2 text-gray-600">Features</a>
-            <a href="#how-it-works" class="block py-2 text-gray-600">How It Works</a>
-            <a href="#pricing" class="block py-2 text-gray-600">Pricing</a>
-            <a href="#faq" class="block py-2 text-gray-600">FAQ</a>
-            <a href="#download" class="block text-center bg-brand-500 text-white py-3 rounded-xl font-semibold">Download App</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200 px-5 pt-3 pb-6 space-y-1">
+            <a href="#features" class="block py-2.5 text-gray-700 font-medium hover:text-brand-500 transition-colors">Features</a>
+            <a href="#how-it-works" class="block py-2.5 text-gray-700 font-medium hover:text-brand-500 transition-colors">How It Works</a>
+            <a href="#pricing" class="block py-2.5 text-gray-700 font-medium hover:text-brand-500 transition-colors">Pricing</a>
+            <a href="#faq" class="block py-2.5 text-gray-700 font-medium hover:text-brand-500 transition-colors">FAQ</a>
+            <a href="#download"
+               class="mt-2 flex items-center justify-center gap-2 bg-gradient-to-r from-accent-500 to-accent-600 text-white py-3.5 rounded-2xl font-bold shadow-md btn-download-glow">
+                <i data-lucide="download" class="w-5 h-5"></i> Download APK — Free
+            </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-brand-50 via-white to-white pt-16 pb-24 lg:pt-24 lg:pb-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-7 text-center lg:text-left">
-                <span class="inline-flex items-center gap-1.5 bg-brand-100 text-brand-700 px-3 py-1.5 rounded-full text-sm font-semibold mb-6">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> Built for women
+    <section class="relative overflow-hidden bg-mesh pt-16 pb-24 lg:pt-28 lg:pb-36">
+        <!-- Decorative blobs -->
+        <div class="absolute top-0 left-0 w-72 h-72 bg-brand-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 text-center lg:text-left reveal">
+                <span class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-brand-200/60 shadow-sm">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-accent-500"></i> Built for women, by women
                 </span>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight">
-                    Your Safety, Your Community, <span class="text-brand-500">Your Power.</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-[3.75rem] font-black text-gray-900 tracking-tight leading-[1.1]">
+                    Your Safety.<br>
+                    Your Community.<br>
+                    <span class="grad-text">Your Power.</span>
                 </h1>
-                <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    ShaktiSetu connects women with instant emergency support and a trusted network, ensuring you never walk alone.
+                <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                    ShaktiSetu connects women with instant emergency support and a trusted network — so you never walk alone.
                 </p>
+
+                <!-- Primary CTAs -->
                 <div class="mt-10 flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
-                    <a href="#download" onclick="analyticsTrack('hero_primary_cta')" class="w-full sm:w-auto bg-brand-500 text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-600 shadow-lg shadow-brand-500/20 transition-all transform hover:-translate-y-0.5">
-                        Get Secure Today — It's Free
+                    <!-- ★ DOWNLOAD BUTTON — highly highlighted ★ -->
+                    <a href="#download" onclick="analyticsTrack('hero_primary_cta')"
+                       class="btn-download-glow relative w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-accent-500 via-accent-400 to-accent-500 text-white px-9 py-4 rounded-2xl font-extrabold text-lg shadow-glow-amber hover:shadow-glow-amber-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group">
+                        <span class="absolute inset-0 bg-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></span>
+                        <i data-lucide="download" class="w-5 h-5 group-hover:animate-bounce"></i>
+                        Download Free — Now
+                        <span class="absolute -top-1 -right-1 flex h-4 w-4">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
+                            <span class="relative inline-flex rounded-full h-4 w-4 bg-white/80"></span>
+                        </span>
                     </a>
-                    <a href="#how-it-works" class="w-full sm:w-auto flex items-center justify-center gap-2 border border-gray-300 bg-white px-8 py-4 rounded-xl font-bold text-lg text-gray-700 hover:bg-gray-50 transition">
-                        See How It Works <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    <a href="#how-it-works"
+                       class="w-full sm:w-auto flex items-center justify-center gap-2 border-2 border-gray-200 bg-white/80 backdrop-blur px-8 py-4 rounded-2xl font-bold text-base text-gray-700 hover:border-brand-300 hover:bg-white transition-all duration-200 shadow-sm">
+                        See How It Works <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
+
                 <!-- Trust Micro-copy -->
-                <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500">
-                    <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> 100% Private & Encrypted</span>
-                    <span class="flex items-center gap-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i> Zero Hidden Costs</span>
+                <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-sm text-gray-500 font-medium">
+                    <span class="flex items-center gap-1.5"><i data-lucide="lock" class="w-4 h-4 text-emerald-500"></i> 100% Private & Encrypted</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="indian-rupee" class="w-4 h-4 text-emerald-500"></i> Zero Hidden Costs</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="smartphone" class="w-4 h-4 text-emerald-500"></i> Android Ready</span>
                 </div>
             </div>
-            <!-- Interactive App Graphic Mockup -->
-            <div class="lg:col-span-5 relative flex justify-center">
-                <div class="absolute inset-0 bg-gradient-to-tr from-brand-500/10 to-accent-500/10 rounded-full blur-3xl -z-10 max-w-md mx-auto"></div>
-                <div class="relative w-72 h-[580px] bg-neutral-900 rounded-[40px] shadow-2xl border-8 border-neutral-800 overflow-hidden flex flex-col justify-between p-4">
-                    <div class="w-32 h-4 bg-neutral-800 rounded-full mx-auto mb-4"></div>
-                    <!-- Mock Screen Content -->
-                    <div class="flex-1 bg-white rounded-2xl p-4 flex flex-col justify-between">
-                        <div class="flex justify-between items-center border-b pb-2">
+
+            <!-- App Mockup -->
+            <div class="lg:col-span-5 relative flex justify-center reveal">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-500/15 to-accent-500/15 rounded-full blur-3xl max-w-sm mx-auto pointer-events-none"></div>
+                <div class="float-slow relative w-[260px] sm:w-[280px] h-[540px] sm:h-[570px] bg-neutral-900 rounded-[44px] shadow-2xl border-[7px] border-neutral-800 overflow-hidden flex flex-col justify-between p-3.5">
+                    <!-- Notch -->
+                    <div class="w-28 h-3.5 bg-neutral-800 rounded-full mx-auto mb-3"></div>
+                    <!-- Screen -->
+                    <div class="flex-1 bg-gray-50 rounded-3xl p-4 flex flex-col justify-between overflow-hidden">
+                        <!-- Status bar -->
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2.5 mb-2">
                             <div>
-                                <p class="text-xs text-gray-400">Current Status</p>
-                                <p class="text-sm font-bold text-emerald-600 flex items-center gap-1"><span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Safe & Monitored</p>
+                                <p class="text-[10px] text-gray-400 font-medium">Current Status</p>
+                                <p class="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> Safe & Monitored
+                                </p>
                             </div>
-                            <i data-lucide="user" class="w-6 h-6 text-gray-400 bg-gray-100 p-1 rounded-full"></i>
-                        </div>
-                        
-                        <div class="my-auto text-center space-y-4">
-                            <button class="w-32 h-32 bg-red-600 rounded-full mx-auto flex flex-col items-center justify-center text-white font-bold shadow-lg shadow-red-600/30 border-4 border-red-200 transform active:scale-95 transition">
-                                <i data-lucide="alert-triangle" class="w-8 h-8 mb-1"></i>
-                                <span>SOS</span>
-                            </button>
-                            <p class="text-xs text-gray-400 font-medium">Press and hold for 2 seconds to alert network</p>
+                            <div class="bg-brand-500 text-white p-1.5 rounded-full">
+                                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            </div>
                         </div>
 
-                        <div class="bg-brand-50 p-3 rounded-xl flex items-center gap-3">
-                            <i data-lucide="navigation" class="w-5 h-5 text-brand-500"></i>
-                            <div class="text-left">
+                        <!-- SOS Button -->
+                        <div class="my-auto text-center space-y-3">
+                            <div class="relative mx-auto w-[120px] h-[120px]">
+                                <div class="absolute inset-0 rounded-full bg-red-500/20 ring-spin"></div>
+                                <button class="absolute inset-2 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex flex-col items-center justify-center text-white font-black shadow-lg shadow-red-600/40 border-4 border-red-200/50 transition active:scale-95">
+                                    <i data-lucide="alert-triangle" class="w-7 h-7 mb-0.5"></i>
+                                    <span class="text-sm tracking-widest">SOS</span>
+                                </button>
+                            </div>
+                            <p class="text-[10px] text-gray-400 font-semibold px-2">Hold 2 sec to alert your network</p>
+                        </div>
+
+                        <!-- Safe Route -->
+                        <div class="bg-gradient-to-r from-brand-50 to-white border border-brand-100 p-3 rounded-2xl flex items-center gap-3 shadow-sm">
+                            <div class="bg-brand-500 text-white p-2 rounded-xl shrink-0">
+                                <i data-lucide="navigation" class="w-4 h-4"></i>
+                            </div>
+                            <div class="text-left min-w-0">
                                 <p class="text-xs font-bold text-brand-700">SafeRoute Active</p>
-                                <p class="text-[10px] text-gray-500">3 verified safe checkpoints ahead</p>
+                                <p class="text-[10px] text-gray-500 truncate">3 verified checkpoints ahead</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Home bar -->
+                    <div class="w-20 h-1 bg-neutral-700 rounded-full mx-auto mt-2.5"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-700 py-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-white">
+                <div class="reveal">
+                    <div class="text-3xl sm:text-4xl font-black shimmer-text">10K+</div>
+                    <p class="text-brand-200 text-sm font-semibold mt-1">Downloads</p>
+                </div>
+                <div class="reveal">
+                    <div class="text-3xl sm:text-4xl font-black shimmer-text">2 sec</div>
+                    <p class="text-brand-200 text-sm font-semibold mt-1">SOS Alert Time</p>
+                </div>
+                <div class="reveal">
+                    <div class="text-3xl sm:text-4xl font-black shimmer-text">100%</div>
+                    <p class="text-brand-200 text-sm font-semibold mt-1">Private & Encrypted</p>
+                </div>
+                <div class="reveal">
+                    <div class="text-3xl sm:text-4xl font-black shimmer-text">₹0</div>
+                    <p class="text-brand-200 text-sm font-semibold mt-1">Forever Free</p>
                 </div>
             </div>
         </div>
@@ -170,32 +320,32 @@
     <!-- Problem & Solution Section -->
     <section class="py-20 bg-white border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Because peace of mind shouldn’t be a luxury.
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
+                <div class="space-y-6 reveal">
+                    <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-gray-900 leading-tight">
+                        Because peace of mind<br>shouldn't be a luxury.
                     </h2>
-                    <p class="text-lg text-gray-600">
+                    <p class="text-lg text-gray-600 leading-relaxed">
                         Navigating dark streets, commuting alone, or handling unsafe environments shouldn’t fall entirely on your shoulders. Existing solutions are either too slow or too complicated when seconds matter.
                     </p>
-                    <div class="border-l-4 border-brand-500 pl-4 italic text-gray-700">
+                    <div class="border-l-4 border-brand-500 pl-5 py-1 italic text-gray-700 text-base font-medium bg-brand-50/50 rounded-r-xl">
                         "We envisioned a digital bridge—a 'Setu'—that turns collective awareness into actionable personal security instantly."
                     </div>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-3xl space-y-6">
+                <div class="bg-gray-50 p-8 rounded-3xl space-y-6 border border-gray-100 shadow-sm reveal">
                     <div class="flex gap-4 items-start">
-                        <div class="bg-red-100 p-2.5 rounded-xl text-red-600 shrink-0"><i data-lucide="x-circle" class="w-5 h-5"></i></div>
+                        <div class="bg-red-100 p-2.5 rounded-xl text-red-600 shrink-0 shadow-sm"><i data-lucide="x-circle" class="w-5 h-5"></i></div>
                         <div>
                             <h4 class="font-bold text-gray-900">The Status Quo</h4>
-                            <p class="text-gray-600 text-sm mt-1">Fumbling with lock screens, dialing dispatchers, or feeling isolated during stressful moments.</p>
+                            <p class="text-gray-600 text-sm mt-1 leading-relaxed">Fumbling with lock screens, dialing dispatchers, or feeling isolated during stressful moments.</p>
                         </div>
                     </div>
                     <div class="h-px bg-gray-200"></div>
                     <div class="flex gap-4 items-start">
-                        <div class="bg-emerald-100 p-2.5 rounded-xl text-emerald-600 shrink-0"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
+                        <div class="bg-emerald-100 p-2.5 rounded-xl text-emerald-600 shrink-0 shadow-sm"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
                         <div>
                             <h4 class="font-bold text-gray-900">The ShaktiSetu Approach</h4>
-                            <p class="text-gray-600 text-sm mt-1">One-tap SOS triggers, automated location routing to trusted guardians, and community-verified safe routing maps.</p>
+                            <p class="text-gray-600 text-sm mt-1 leading-relaxed">One-tap SOS triggers, automated location routing to trusted guardians, and community-verified safe routing maps.</p>
                         </div>
                     </div>
                 </div>
@@ -204,35 +354,45 @@
     </section>
 
     <!-- Key Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
+    <section id="features" class="py-20 bg-gray-50/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Designed for Real-World Safety</h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Features built with intuition, accessibility, and high efficiency under pressure.</p>
-            
-            <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="reveal">
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-gray-900">Designed for Real-World Safety</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto font-medium">Features built with intuition, accessibility, and high efficiency under pressure.</p>
+            </div>
+
+            <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Feature 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-left hover:shadow-md transition">
-                    <div class="bg-brand-50 text-brand-500 w-12 h-12 rounded-xl flex items-center justify-center mb-5"><i data-lucide="zap" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2">Instant SOS Action</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">A single, secure gesture issues alerts to selected guardians and emergency response services within 2 seconds.</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-white text-left hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group reveal">
+                    <div class="bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 rounded-2xl flex items-center justify-center mb-5 shadow-md group-hover:shadow-glow-brand transition-shadow">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-gray-900 mb-2">Instant SOS Action</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">A single, secure gesture issues alerts to selected guardians and emergency response services within 2 seconds.</p>
                 </div>
                 <!-- Feature 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-left hover:shadow-md transition">
-                    <div class="bg-brand-50 text-brand-500 w-12 h-12 rounded-xl flex items-center justify-center mb-5"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2">SafeRoute Navigation</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Crowdsourced and validated navigation data showing you brightly-lit, well-traveled paths rather than just fast routes.</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-white text-left hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group reveal">
+                    <div class="bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 rounded-2xl flex items-center justify-center mb-5 shadow-md group-hover:shadow-glow-brand transition-shadow">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-gray-900 mb-2">SafeRoute Navigation</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Crowdsourced and validated navigation data showing brightly-lit, well-traveled paths rather than just fast routes.</p>
                 </div>
                 <!-- Feature 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-left hover:shadow-md transition">
-                    <div class="bg-brand-50 text-brand-500 w-12 h-12 rounded-xl flex items-center justify-center mb-5"><i data-lucide="users" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2">Trusted Circles</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Create customized, nested groups—family, colleagues, or neighborhood allies—to easily coordinate arrivals.</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-white text-left hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group reveal">
+                    <div class="bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 rounded-2xl flex items-center justify-center mb-5 shadow-md group-hover:shadow-glow-brand transition-shadow">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-gray-900 mb-2">Trusted Circles</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Create customized, nested groups—family, colleagues, or neighborhood allies—to easily coordinate safe arrivals.</p>
                 </div>
                 <!-- Feature 4 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-left hover:shadow-md transition">
-                    <div class="bg-brand-50 text-brand-500 w-12 h-12 rounded-xl flex items-center justify-center mb-5"><i data-lucide="eye-off" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-xl text-gray-900 mb-2">Privacy First Vault</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Your location tracking is entirely locally managed. Only shared when you activate it. Your privacy is paramount.</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-white text-left hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group reveal">
+                    <div class="bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 rounded-2xl flex items-center justify-center mb-5 shadow-md group-hover:shadow-glow-brand transition-shadow">
+                        <i data-lucide="eye-off" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-black text-lg text-gray-900 mb-2">Privacy First Vault</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Your location tracking is entirely locally managed. Only shared when you activate it. Your privacy is paramount.</p>
                 </div>
             </div>
         </div>
@@ -241,72 +401,102 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Three Steps to Ongoing Peace of Mind</h2>
-                <p class="mt-4 text-lg text-gray-600">Get up and running in under three minutes.</p>
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-gray-900">Three Steps to Peace of Mind</h2>
+                <p class="mt-4 text-lg text-gray-600 font-medium">Get up and running in under three minutes.</p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-12 relative">
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Connector line (desktop) -->
+                <div class="hidden md:block absolute top-7 left-[calc(16.66%+24px)] right-[calc(16.66%+24px)] h-0.5 bg-gradient-to-r from-brand-200 via-brand-400 to-brand-200"></div>
+
                 <!-- Step 1 -->
-                <div class="text-center space-y-4">
-                    <div class="w-12 h-12 bg-brand-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto shadow-md">1</div>
-                    <h3 class="font-bold text-xl text-gray-900">Download & Verify</h3>
-                    <p class="text-gray-600 text-sm max-w-xs mx-auto">Install the app securely via SMS link or App Stores. Complete quick verification to confirm your identity.</p>
+                <div class="text-center space-y-4 reveal">
+                    <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-brand-700 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto shadow-lg shadow-brand-500/30">1</div>
+                    <h3 class="font-black text-xl text-gray-900">Download & Verify</h3>
+                    <p class="text-gray-500 text-sm max-w-xs mx-auto leading-relaxed">Install the app via direct APK download. Complete quick verification to confirm your identity.</p>
                 </div>
                 <!-- Step 2 -->
-                <div class="text-center space-y-4">
-                    <div class="w-12 h-12 bg-brand-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto shadow-md">2</div>
-                    <h3 class="font-bold text-xl text-gray-900">Set Your Guardians</h3>
-                    <p class="text-gray-600 text-sm max-w-xs mx-auto">Link close friends, trusted family members, or active local community responders to form your initial safety net.</p>
+                <div class="text-center space-y-4 reveal">
+                    <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-brand-700 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto shadow-lg shadow-brand-500/30">2</div>
+                    <h3 class="font-black text-xl text-gray-900">Set Your Guardians</h3>
+                    <p class="text-gray-500 text-sm max-w-xs mx-auto leading-relaxed">Link close friends, trusted family members, or active local community responders to form your safety net.</p>
                 </div>
                 <!-- Step 3 -->
-                <div class="text-center space-y-4">
-                    <div class="w-12 h-12 bg-brand-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto shadow-md">3</div>
-                    <h3 class="font-bold text-xl text-gray-900">Move with Confidence</h3>
-                    <p class="text-gray-600 text-sm max-w-xs mx-auto">Activate live tracking on late commutes, tap for assistance, or safely assist other community members nearby.</p>
+                <div class="text-center space-y-4 reveal">
+                    <div class="w-14 h-14 bg-gradient-to-br from-brand-500 to-brand-700 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto shadow-lg shadow-brand-500/30">3</div>
+                    <h3 class="font-black text-xl text-gray-900">Move with Confidence</h3>
+                    <p class="text-gray-500 text-sm max-w-xs mx-auto leading-relaxed">Activate live tracking on late commutes, tap for assistance, or safely assist community members nearby.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials / Social Proof Section -->
-    <section class="py-20 bg-brand-50">
+    <section class="py-20 bg-gradient-to-b from-brand-50/60 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Trusted by Thousands of Women</h2>
-                <p class="mt-2 text-gray-600">See how early community members rely on ShaktiSetu.</p>
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-gray-900">Trusted by Thousands of Women</h2>
+                <p class="mt-2 text-gray-600 font-medium">See how early community members rely on ShaktiSetu.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Testimonial 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-100 flex flex-col justify-between">
-                    <p class="text-gray-600 italic">"My late-night subway commutes back home from college used to be highly stressful. Walking with SafeRoute active makes me feel completely protected."</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-brand-100/60 flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 reveal">
+                    <div>
+                        <div class="flex gap-0.5 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed">"My late-night subway commutes back home from college used to be highly stressful. Walking with SafeRoute active makes me feel completely protected."</p>
+                    </div>
                     <div class="mt-6 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center text-brand-700 font-bold">A</div>
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-200 to-brand-400 flex items-center justify-center text-white font-black text-sm shadow">A</div>
                         <div>
                             <h5 class="font-bold text-sm text-gray-900">Ananya R.</h5>
-                            <p class="text-xs text-gray-500">Student, Tech University</p>
+                            <p class="text-xs text-gray-400">Student, Tech University</p>
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-100 flex flex-col justify-between">
-                    <p class="text-gray-600 italic">"Setting up my mother and daughter on the same network circle took minutes. The location integrity and strict privacy options are unmatched."</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-brand-100/60 flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 reveal">
+                    <div>
+                        <div class="flex gap-0.5 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed">"Setting up my mother and daughter on the same network circle took minutes. The location integrity and strict privacy options are unmatched."</p>
+                    </div>
                     <div class="mt-6 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center text-brand-700 font-bold">P</div>
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-200 to-brand-400 flex items-center justify-center text-white font-black text-sm shadow">P</div>
                         <div>
                             <h5 class="font-bold text-sm text-gray-900">Pooja K.</h5>
-                            <p class="text-xs text-gray-500">Working Parent</p>
+                            <p class="text-xs text-gray-400">Working Parent</p>
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-100 flex flex-col justify-between">
-                    <p class="text-gray-600 italic">"I heavily value that our private geolocation isn't monetized or constantly logged. This tool truly champions modern community empowerment."</p>
+                <div class="glass bg-white p-7 rounded-3xl shadow-sm border border-brand-100/60 flex flex-col justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 reveal">
+                    <div>
+                        <div class="flex gap-0.5 mb-4">
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                            <i data-lucide="star" class="w-4 h-4 text-accent-500 fill-accent-500"></i>
+                        </div>
+                        <p class="text-gray-700 italic leading-relaxed">"I heavily value that our private geolocation isn't monetized or constantly logged. This tool truly champions modern community empowerment."</p>
+                    </div>
                     <div class="mt-6 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center text-brand-700 font-bold">M</div>
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-200 to-brand-400 flex items-center justify-center text-white font-black text-sm shadow">M</div>
                         <div>
                             <h5 class="font-bold text-sm text-gray-900">Meera S.</h5>
-                            <p class="text-xs text-gray-500">Community Safety Advocate</p>
+                            <p class="text-xs text-gray-400">Community Safety Advocate</p>
                         </div>
                     </div>
                 </div>
@@ -317,54 +507,73 @@
     <!-- Pricing / Free to Start Section -->
     <section id="pricing" class="py-20 bg-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Core Safety is Always Free</h2>
-            <p class="mt-4 text-lg text-gray-600">We firmly believe safety features should never rest behind a premium paywall.</p>
-            
-            <div class="mt-10 bg-gradient-to-br from-brand-50 to-white border-2 border-brand-500 rounded-3xl p-8 max-w-md mx-auto shadow-lg relative">
-                <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Standard Edition</span>
-                <div class="text-5xl font-black text-gray-900 mt-2">₹0 <span class="text-lg font-normal text-gray-500">/ forever</span></div>
-                <ul class="mt-8 space-y-4 text-left text-gray-600 font-medium">
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-emerald-500 w-5 h-5"></i> Unlimited Instant SOS Alerts</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-emerald-500 w-5 h-5"></i> Add Up to 5 Personal Guardians</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-emerald-500 w-5 h-5"></i> SafeRoute Verified Mapping</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="text-emerald-500 w-5 h-5"></i> Fully Encrypted Device Data</li>
-                </ul>
-                <a href="#download" onclick="analyticsTrack('pricing_cta')" class="block mt-8 w-full bg-brand-500 text-white text-center py-3.5 rounded-xl font-bold hover:bg-brand-600 transition">Get Started Free</a>
+            <div class="reveal">
+                <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-gray-900">Core Safety is Always Free</h2>
+                <p class="mt-4 text-lg text-gray-600 font-medium">We firmly believe safety features should never rest behind a premium paywall.</p>
+            </div>
+
+            <div class="mt-10 reveal">
+                <div class="relative bg-gradient-to-br from-white to-brand-50 border-2 border-brand-500 rounded-3xl p-8 sm:p-10 max-w-md mx-auto shadow-xl shadow-brand-500/10">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-500 to-brand-700 text-white text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow">Standard Edition</span>
+                    <div class="text-6xl font-black text-gray-900 mt-3">₹0 <span class="text-lg font-semibold text-gray-400">/ forever</span></div>
+                    <ul class="mt-8 space-y-4 text-left text-gray-700 font-semibold">
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center shrink-0"><i data-lucide="check" class="text-emerald-600 w-3.5 h-3.5"></i></span>
+                            Unlimited Instant SOS Alerts
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center shrink-0"><i data-lucide="check" class="text-emerald-600 w-3.5 h-3.5"></i></span>
+                            Add Up to 5 Personal Guardians
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center shrink-0"><i data-lucide="check" class="text-emerald-600 w-3.5 h-3.5"></i></span>
+                            SafeRoute Verified Mapping
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center shrink-0"><i data-lucide="check" class="text-emerald-600 w-3.5 h-3.5"></i></span>
+                            Fully Encrypted Device Data
+                        </li>
+                    </ul>
+                    <a href="#download" onclick="analyticsTrack('pricing_cta')"
+                       class="btn-download-glow mt-8 flex items-center justify-center gap-2 w-full bg-gradient-to-r from-accent-500 to-accent-600 text-white py-4 rounded-2xl font-extrabold text-base shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                        <i data-lucide="download" class="w-5 h-5"></i> Download Free APK
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section (Accessible Accordion) -->
-    <section id="faq" class="py-20 bg-gray-50">
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50/70">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold tracking-tight text-center text-gray-900 sm:text-4xl mb-12">Frequently Asked Questions</h2>
-            
-            <div class="space-y-4">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-center text-gray-900 mb-12 reveal">Frequently Asked Questions</h2>
+
+            <div class="space-y-3">
                 <!-- FAQ Item 1 -->
-                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200">
-                    <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left font-bold text-gray-900 text-lg hover:bg-gray-50/50" aria-expanded="false">
+                <div class="bg-white border border-gray-200/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md reveal">
+                    <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left font-bold text-gray-900 text-base sm:text-lg hover:bg-gray-50/50 transition-colors" aria-expanded="false">
                         <span>How does the app protect my privacy?</span>
-                        <i data-lucide="chevron-down" class="faq-icon text-gray-500 w-5 h-5 transition-transform duration-200"></i>
+                        <i data-lucide="chevron-down" class="faq-icon text-brand-500 w-5 h-5 shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer px-6 bg-white text-gray-600 text-sm leading-relaxed">
-                        <p class="pb-5">Your telemetry data is only broadcasted when you run SafeRoute navigation or directly trigger the SOS mode. We do not maintain historical tracking logs or share records with third parties.</p>
+                        <p class="pb-5">Your telemetry data is only broadcasted when you run SafeRoute navigation or directly trigger SOS mode. We do not maintain historical tracking logs or share records with third parties.</p>
                     </div>
                 </div>
                 <!-- FAQ Item 2 -->
-                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200">
-                    <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left font-bold text-gray-900 text-lg hover:bg-gray-50/50" aria-expanded="false">
+                <div class="bg-white border border-gray-200/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md reveal">
+                    <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left font-bold text-gray-900 text-base sm:text-lg hover:bg-gray-50/50 transition-colors" aria-expanded="false">
                         <span>Will this application quickly drain my battery?</span>
-                        <i data-lucide="chevron-down" class="faq-icon text-gray-500 w-5 h-5 transition-transform duration-200"></i>
+                        <i data-lucide="chevron-down" class="faq-icon text-brand-500 w-5 h-5 shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer px-6 bg-white text-gray-600 text-sm leading-relaxed">
                         <p class="pb-5">ShaktiSetu utilizes modern, energy-optimized background refresh protocols that strictly consume minimal power when dormant, utilizing active GPS only when strictly requested.</p>
                     </div>
                 </div>
                 <!-- FAQ Item 3 -->
-                <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200">
-                    <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left font-bold text-gray-900 text-lg hover:bg-gray-50/50" aria-expanded="false">
+                <div class="bg-white border border-gray-200/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md reveal">
+                    <button class="faq-toggle w-full px-6 py-5 flex items-center justify-between text-left font-bold text-gray-900 text-base sm:text-lg hover:bg-gray-50/50 transition-colors" aria-expanded="false">
                         <span>What happens when I signal an emergency?</span>
-                        <i data-lucide="chevron-down" class="faq-icon text-gray-500 w-5 h-5 transition-transform duration-200"></i>
+                        <i data-lucide="chevron-down" class="faq-icon text-brand-500 w-5 h-5 shrink-0 ml-4"></i>
                     </button>
                     <div class="faq-answer px-6 bg-white text-gray-600 text-sm leading-relaxed">
                         <p class="pb-5">The system immediately fires text updates and push pings displaying your current location coordinates, routing details, and status updates directly to your personalized network circle.</p>
@@ -374,93 +583,100 @@
         </div>
     </section>
 
-    <!-- Final CTA Banner -->
-    <section id="download" class="py-16 bg-brand-700 text-white relative overflow-hidden">
+    <!-- Final CTA / Download Section -->
+    <section id="download" class="relative py-20 sm:py-28 overflow-hidden bg-gray-900">
+        <!-- Background gradients -->
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-700 via-gray-900 to-gray-900 pointer-events-none"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Step into a safer tomorrow, today.</h2>
-            <p class="mt-4 text-brand-100 max-w-xl mx-auto text-lg">Join thousands of women who navigate their daily life with absolute peace of mind.</p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="app.apk" download aria-label="Download ShaktiSetu APK file" onclick="analyticsTrack('download_apk')" class="bg-black hover:bg-neutral-900 transition text-white px-6 py-3 rounded-xl flex items-center text-left gap-3 border border-neutral-700 w-48">
-                    <i data-lucide="download" class="w-6 h-6"></i>
-                    <div>
-                        <p class="text-[10px] text-gray-400 uppercase">Direct Download</p>
-                        <p class="text-sm font-bold -mt-0.5">Download APK</p>
-                    </div>
+            <span class="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-1.5 rounded-full text-sm font-bold mb-6 border border-white/20 backdrop-blur-sm">
+                <i data-lucide="android" class="w-4 h-4 text-accent-400"></i> Available for Android
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                Step into a safer tomorrow,<br class="hidden sm:block"> today.
+            </h2>
+            <p class="mt-5 text-gray-300 max-w-xl mx-auto text-lg font-medium">
+                Join thousands of women who navigate their daily life with absolute peace of mind. 100% free. No sign-up required.
+            </p>
+
+            <!-- ★★★ MAIN DOWNLOAD BUTTON — Ultra Highlighted ★★★ -->
+            <div class="mt-10 flex flex-col items-center gap-4">
+                <a href="app.apk" download aria-label="Download ShaktiSetu APK"
+                   onclick="analyticsTrack('download_apk')"
+                   class="btn-download-glow group relative inline-flex items-center gap-4 bg-gradient-to-r from-accent-500 via-accent-400 to-accent-500 text-white px-10 sm:px-14 py-5 sm:py-6 rounded-3xl font-black text-xl sm:text-2xl shadow-glow-amber-lg hover:shadow-glow-amber hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
+                    <!-- Shimmer overlay -->
+                    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out rounded-3xl"></span>
+                    <!-- Ping dot -->
+                    <span class="relative flex h-5 w-5 shrink-0">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-50"></span>
+                        <span class="relative inline-flex items-center justify-center rounded-full h-5 w-5 bg-white/80">
+                            <i data-lucide="download" class="w-3 h-3 text-accent-600"></i>
+                        </span>
+                    </span>
+                    <span class="relative flex flex-col items-start leading-tight">
+                        <span class="text-xs font-semibold text-white/80 uppercase tracking-wider">Free Download</span>
+                        <span>Download APK</span>
+                    </span>
+                    <i data-lucide="arrow-down-circle" class="relative w-7 h-7 group-hover:animate-bounce shrink-0"></i>
                 </a>
+
+                <!-- Trust signals -->
+                <div class="flex flex-wrap justify-center gap-5 text-sm text-gray-400 font-medium mt-2">
+                    <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i> Virus-free & Safe</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="lock" class="w-4 h-4 text-emerald-400"></i> No account needed</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="heart" class="w-4 h-4 text-rose-400"></i> Made with ❤️ in India</span>
+                </div>
             </div>
         </div>
-        <div class="absolute inset-0 bg-radial-gradient from-brand-600 to-brand-800 opacity-50 pointer-events-none"></div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+    <footer class="bg-gray-950 text-gray-400 py-14 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-10">
             <div class="space-y-4">
-                <div class="flex items-center space-x-2 text-white">
-                    <div class="bg-brand-500 p-1.5 rounded-lg"><i data-lucide="shield" class="w-5 h-5"></i></div>
-                    <span class="text-lg font-bold">ShaktiSetu</span>
+                <div class="flex items-center space-x-2.5 text-white">
+                    <div class="bg-gradient-to-br from-brand-500 to-brand-700 p-1.5 rounded-xl shadow"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                    <span class="text-lg font-extrabold">Shakti<span class="text-brand-400">Setu</span></span>
                 </div>
-                <p class="text-xs">Building bridges of mutual security, support, and community network resources for women everywhere.</p>
+                <p class="text-xs leading-relaxed">Building bridges of mutual security, support, and community network resources for women everywhere.</p>
             </div>
             <div>
-                <h4 class="text-white text-sm font-semibold mb-4">Product</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#features" class="hover:text-white transition">Features</a></li>
-                    <li><a href="#how-it-works" class="hover:text-white transition">How it Works</a></li>
-                    <li><a href="#pricing" class="hover:text-white transition">Pricing Structure</a></li>
+                <h4 class="text-white text-sm font-bold mb-4">Product</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                    <li><a href="#how-it-works" class="hover:text-white transition-colors">How it Works</a></li>
+                    <li><a href="#pricing" class="hover:text-white transition-colors">Pricing Structure</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white text-sm font-semibold mb-4">Legal & Privacy</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                    <li><a href="#" class="hover:text-white transition">Data Protection Policy</a></li>
+                <h4 class="text-white text-sm font-bold mb-4">Legal & Privacy</h4>
+                <ul class="space-y-2.5 text-xs">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Data Protection Policy</a></li>
                 </ul>
             </div>
             <div>
-    <h4 class="text-white text-sm font-semibold mb-4">Connect With Us</h4>
-
-    <div class="flex gap-4 mb-5">
-        <!-- <a href="https://twitter.com/yourusername"
-           target="_blank"
-           aria-label="Twitter"
-           class="hover:text-white hover:scale-110 transition duration-300">
-            <i data-lucide="twitter" class="w-5 h-5"></i>
-        </a> -->
-
-        <!-- <a href="https://instagram.com/yourusername"
-           target="_blank"
-           aria-label="Instagram"
-           class="hover:text-white hover:scale-110 transition duration-300">
-            <i data-lucide="instagram" class="w-5 h-5"></i>
-        </a> -->
-
-        <a href="mailto:parashar.harsh.012@gmail.com"
-           aria-label="Email"
-           class="hover:text-white hover:scale-110 transition duration-300">
-            <i data-lucide="mail" class="w-5 h-5"></i>
-        </a>
-
-        <a href="https://github.com/harsharma_me"
-           target="_blank"
-           aria-label="GitHub"
-           class="hover:text-white hover:scale-110 transition duration-300">
-            <i data-lucide="github" class="w-5 h-5"></i>
-        </a>
-    </div>
-
-    <p class="text-xs text-gray-400 leading-relaxed">
-        Have feedback, suggestions, or collaboration ideas? <br>
-        Reach us at
-        <a href="mailto:parashar.harsh.012@gmail.com"
-           class="text-white hover:underline">
-           parashar.harsh.012@gmail.com
-        </a>
-    </p>
-</div>
+                <h4 class="text-white text-sm font-bold mb-4">Connect With Us</h4>
+                <div class="flex gap-4 mb-5">
+                    <a href="mailto:parashar.harsh.012@gmail.com" aria-label="Email"
+                       class="w-9 h-9 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all duration-200">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://github.com/harsharma_me" target="_blank" aria-label="GitHub"
+                       class="w-9 h-9 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-gray-600 hover:text-white transition-all duration-200">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Have feedback or ideas?<br>
+                    <a href="mailto:parashar.harsh.012@gmail.com" class="text-white hover:underline">parashar.harsh.012@gmail.com</a>
+                </p>
+            </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-gray-800 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-gray-800/60 text-center text-xs text-gray-600">
             &copy; 2026 ShaktiSetu. All rights reserved. Built with love and security in mind.
         </div>
     </footer>
@@ -470,21 +686,40 @@
         // Initialize Icons
         lucide.createIcons();
 
+        // Nav scroll effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('nav-scrolled', window.scrollY > 10);
+        });
+
         // Mobile Menu Interactivity
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
 
-        // Accessible FAQ Accordion Functionality
+        // Scroll-reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Accessible FAQ Accordion
         document.querySelectorAll('.faq-toggle').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
                 const isExpanded = button.getAttribute('aria-expanded') === 'true';
-                
-                // Close other open accordions
+
                 document.querySelectorAll('.faq-toggle').forEach(otherBtn => {
                     otherBtn.setAttribute('aria-expanded', 'false');
                     otherBtn.parentElement.classList.remove('faq-active');
