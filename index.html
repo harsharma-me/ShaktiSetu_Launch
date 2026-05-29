@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShaktiSetu | Next-Gen Safety Infrastructure</title>
-    <meta name="description" content="Advanced personal security and community networking platform engineered for women.">
+    <title>ShaktiSetu | Your Safety, Your Power</title>
+    <meta name="description" content="Personal safety app for women. Instant SOS, safe route navigation, and trusted community network.">
 
-    <!-- Fonts: Plus Jakarta Sans for modern clean look, JetBrains Mono for tech micro-copy -->
+    <!-- Fonts: Plus Jakarta Sans for a friendly, modern, readable look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,26 +20,25 @@
                 extend: {
                     fontFamily: {
                         sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        background: '#09090b', // Deep Zinc - more premium than pure black
-                        surface: '#18181b',
-                        surface2: '#27272a',
+                        background: '#000000', // Pure AMOLED Black
+                        surface: '#0A0A0A', 
+                        surface2: '#141414',
                         brand: {
-                            400: '#fb7185', // Rose 400
-                            500: '#f43f5e', // Rose 500 - Sophisticated, warm, urgent but not neon
-                            600: '#e11d48', // Rose 600
+                            400: '#22d3ee', // Friendly Cyan
+                            500: '#06b6d4', 
+                            600: '#0891b2', 
                         },
                         accent: {
-                            400: '#818cf8',
-                            500: '#6366f1', // Indigo 500 - Represents deep tech and security
+                            400: '#c084fc', // Soft Purple
+                            500: '#a855f7', 
                         }
                     },
                     backgroundImage: {
                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'gradient-text': 'linear-gradient(to right bottom, #ffffff, #a1a1aa)',
-                        'gradient-brand': 'linear-gradient(to right, #f43f5e, #6366f1)',
+                        'gradient-text': 'linear-gradient(to right bottom, #ffffff, #94a3b8)',
+                        'gradient-brand': 'linear-gradient(to right, #06b6d4, #a855f7)',
                     },
                     animation: {
                         'aurora': 'aurora 24s linear infinite',
@@ -71,33 +70,34 @@
             overflow-x: hidden;
         }
 
-        /* Tech Grid Background - Muted for elegance */
+        /* Subtle Grid Background */
         .bg-grid {
             background-size: 40px 40px;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
             -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
         }
 
-        /* Premium Glass Card (Linear/Vercel style) */
+        /* Premium Friendly Glass Card */
         .glass-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: linear-gradient(145deg, rgba(15, 15, 15, 0.8) 0%, rgba(5, 5, 5, 0.4) 100%);
+            border: 1px solid rgba(255,255,255,0.06);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 28px; /* Slightly rounder for friendlier feel */
             box-shadow: 0 4px 30px -1px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
         }
         .glass-card:hover {
-            border-color: rgba(255,255,255,0.1);
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border-color: rgba(6, 182, 212, 0.4); 
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.5) 100%);
+            box-shadow: 0 8px 40px -1px rgba(6, 182, 212, 0.15);
+            transform: translateY(-2px);
         }
 
-        /* Glowing text gradient */
         .text-glow {
-            text-shadow: 0 0 30px rgba(244, 63, 94, 0.25);
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
         }
 
         /* Reveal Animation */
@@ -113,10 +113,10 @@
 
         /* Top Nav Glass */
         .nav-glass {
-            background: rgba(9, 9, 11, 0.7); /* Zinc 950 with opacity */
+            background: rgba(0, 0, 0, 0.7); 
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         /* Glowing button */
@@ -128,252 +128,243 @@
             position: absolute;
             inset: -2px;
             border-radius: inherit;
-            background: linear-gradient(to right, #f43f5e, #6366f1);
+            background: linear-gradient(to right, #06b6d4, #a855f7);
             z-index: -1;
             opacity: 0;
             transition: opacity 0.3s ease;
-            filter: blur(10px);
+            filter: blur(12px);
         }
         .btn-glow:hover::after {
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
-        ::selection { background: rgba(244, 63, 94, 0.25); color: white; }
+        ::selection { background: rgba(6, 182, 212, 0.25); color: white; }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-500/30">
 
     <!-- Ambient Aurora Backgrounds -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-[-15%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-500/10 blur-[130px] mix-blend-screen animate-aurora"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent-500/10 blur-[120px] mix-blend-screen animate-aurora" style="animation-direction: reverse; animation-duration: 28s;"></div>
-        <div class="absolute inset-0 bg-grid w-full h-full opacity-30"></div>
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-background">
+        <div class="absolute top-[-15%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-500/15 blur-[150px] animate-aurora mix-blend-normal"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent-500/15 blur-[150px] animate-aurora mix-blend-normal" style="animation-direction: reverse; animation-duration: 28s;"></div>
+        <div class="absolute inset-0 bg-grid w-full h-full opacity-50"></div>
     </div>
 
     <!-- Navigation -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-2.5 group">
-                <div class="w-8 h-8 rounded-[10px] bg-gradient-to-tr from-brand-500 to-brand-600 flex items-center justify-center shadow-[0_0_15px_rgba(244,63,94,0.3)]">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-white"></i>
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-white"></i>
                 </div>
-                <span class="font-bold text-lg tracking-tight text-white">Shakti<span class="text-white/50">Setu</span></span>
+                <span class="font-bold text-xl tracking-tight text-white">Shakti<span class="text-white/60">Setu</span></span>
             </a>
             
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-                <a href="#features" class="hover:text-white transition-colors">Infrastructure</a>
-                <a href="#bento" class="hover:text-white transition-colors">Capabilities</a>
-                <a href="#developers" class="hover:text-white transition-colors">Security</a>
+            <!-- User Friendly Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+                <a href="#how-it-works" class="hover:text-white transition-colors">How it Works</a>
+                <a href="#privacy" class="hover:text-white transition-colors">Privacy</a>
             </nav>
 
             <div class="hidden md:flex items-center gap-5">
-                <a href="#" class="text-sm font-medium text-zinc-400 hover:text-white transition-colors">Login</a>
-                <a href="#download" class="text-sm font-medium bg-white text-black px-4 py-1.5 rounded-full hover:bg-zinc-200 transition-colors">
-                    Deploy App
+                <a href="#download" class="text-sm font-bold bg-white text-black px-6 py-2.5 rounded-full hover:bg-slate-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                    Get the App — Free
                 </a>
             </div>
 
-            <button class="md:hidden text-zinc-400 hover:text-white">
-                <i data-lucide="menu" class="w-5 h-5"></i>
+            <button class="md:hidden text-slate-300 hover:text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex flex-col items-center text-center px-4">
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 flex flex-col items-center text-center px-4">
         
-        <!-- Startup Pill Badge -->
-        <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-md mb-8 hover:bg-white/[0.04] transition-colors cursor-pointer">
-            <span class="flex h-2 w-2 relative">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-            </span>
-            <span class="text-xs font-mono text-zinc-300">ShaktiSetu v2.0 is live</span>
-            <i data-lucide="arrow-right" class="w-3 h-3 text-zinc-500"></i>
+        <!-- Friendly Badge -->
+        <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-md mb-8 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+            <i data-lucide="heart" class="w-4 h-4 text-brand-400"></i>
+            <span class="text-sm font-medium text-brand-100">Built for women, trusted by families</span>
         </div>
 
-        <h1 class="reveal text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter leading-[1.05] max-w-4xl bg-gradient-text text-transparent bg-clip-text text-glow pb-2">
-            Personal safety,<br>
-            <span class="bg-gradient-brand text-transparent bg-clip-text">re-engineered.</span>
+        <h1 class="reveal text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] max-w-4xl bg-gradient-text text-transparent bg-clip-text text-glow pb-2">
+            Peace of mind,<br>
+            <span class="bg-gradient-brand text-transparent bg-clip-text">in the palm of your hand.</span>
         </h1>
         
-        <p class="reveal mt-6 text-zinc-400 text-lg md:text-xl max-w-2xl font-light tracking-wide leading-relaxed" style="transition-delay: 100ms;">
-            An advanced, encrypted safety infrastructure connecting women to instant response networks, verified routes, and trusted guardians.
+        <p class="reveal mt-6 text-slate-300 text-lg md:text-xl max-w-2xl font-medium tracking-wide leading-relaxed" style="transition-delay: 100ms;">
+            An easy-to-use app that instantly connects you to emergency support, verified safe routes, and your closest friends when you need them most.
         </p>
 
         <div class="reveal mt-10 flex flex-col sm:flex-row items-center gap-4" style="transition-delay: 200ms;">
-            <a href="#download" class="btn-glow flex items-center gap-2 bg-white text-black px-8 py-3.5 rounded-full font-semibold text-sm hover:scale-105 transition-transform">
-                Deploy ShaktiSetu <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-500"></i>
+            <a href="#download" class="btn-glow flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold text-base hover:scale-105 transition-transform w-full sm:w-auto">
+                Download for Free <i data-lucide="arrow-right" class="w-4 h-4 text-slate-600"></i>
             </a>
-            <a href="#bento" class="flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm text-zinc-300 border border-white/5 hover:bg-white/5 transition-colors">
-                <i data-lucide="terminal" class="w-4 h-4"></i> View Documentation
+            <a href="#how-it-works" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-base text-white border border-white/20 hover:bg-white/10 transition-colors w-full sm:w-auto">
+                <i data-lucide="play-circle" class="w-5 h-5"></i> See How It Works
             </a>
-        </div>
-
-        <!-- Terminal-style command mock -->
-        <div class="reveal mt-16 max-w-md w-full bg-[#121214] border border-white/5 rounded-xl p-4 flex items-center justify-between font-mono text-xs text-zinc-400 shadow-2xl" style="transition-delay: 300ms;">
-            <div class="flex items-center gap-3">
-                <span class="text-brand-500">~</span>
-                <span>npm install @shaktisetu/core</span>
-            </div>
-            <button class="hover:text-white transition-colors" onclick="navigator.clipboard.writeText('npm install @shaktisetu/core')" aria-label="Copy code">
-                <i data-lucide="copy" class="w-4 h-4"></i>
-            </button>
         </div>
     </section>
 
-    <!-- App UI Mockup -->
+    <!-- App UI Mockup (Simplified & Friendly) -->
     <section class="relative px-6 pb-32">
-        <div class="max-w-5xl mx-auto reveal animate-float">
-            <!-- Glassy outer frame simulating an OS window -->
-            <div class="bg-[#18181b]/50 border border-white/5 p-2 rounded-[2rem] backdrop-blur-2xl shadow-2xl ring-1 ring-white/[0.02]">
-                <div class="bg-[#09090b] border border-white/5 rounded-[1.5rem] overflow-hidden relative shadow-inner">
+        <div class="max-w-4xl mx-auto reveal animate-float">
+            <!-- Sleek Phone Frame -->
+            <div class="bg-[#0A0A0A] border border-white/[0.08] p-3 rounded-[2.5rem] backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/[0.05] max-w-md mx-auto">
+                <div class="bg-[#050505] border border-white/[0.05] rounded-[2rem] overflow-hidden relative shadow-inner h-[600px] flex flex-col">
                     
-                    <!-- Top Window Bar -->
-                    <div class="flex items-center px-4 h-12 border-b border-white/5 bg-white/[0.01]">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-zinc-700/50"></div>
-                            <div class="w-3 h-3 rounded-full bg-zinc-700/50"></div>
-                            <div class="w-3 h-3 rounded-full bg-zinc-700/50"></div>
+                    <!-- Dynamic Island / Top Bar -->
+                    <div class="pt-4 px-6 pb-2 flex justify-between items-center z-10 relative">
+                        <span class="text-xs font-semibold text-white">9:41</span>
+                        <div class="w-24 h-6 bg-black rounded-full border border-white/10 flex items-center justify-center gap-1.5">
+                            <div class="w-1.5 h-1.5 bg-brand-500 rounded-full animate-pulse"></div>
+                            <span class="text-[10px] text-brand-400 font-medium">Protected</span>
                         </div>
-                        <div class="mx-auto flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-md border border-white/5 font-mono text-[10px] text-zinc-400">
-                            <i data-lucide="lock" class="w-3 h-3 text-emerald-400"></i> Encrypted Connection
+                        <div class="flex gap-1.5 items-center">
+                            <i data-lucide="signal" class="w-3.5 h-3.5 text-white"></i>
+                            <i data-lucide="wifi" class="w-3.5 h-3.5 text-white"></i>
+                            <i data-lucide="battery-full" class="w-4 h-4 text-white"></i>
                         </div>
                     </div>
 
-                    <!-- App Content Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-1 p-1 bg-white/[0.01]">
+                    <!-- App Content -->
+                    <div class="flex-1 p-6 flex flex-col gap-6 relative z-10">
                         
-                        <!-- Sidebar -->
-                        <div class="p-6 bg-[#09090b] rounded-bl-[1.2rem] flex flex-col gap-6">
-                            <div class="flex items-center gap-3 text-white font-medium text-sm">
-                                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_10px_#34d399]"></div>
-                                Live Telemetry
-                            </div>
-                            <div class="space-y-4">
-                                <div class="bg-white/[0.02] border border-white/5 p-3 rounded-lg flex items-center gap-3">
-                                    <i data-lucide="map-pin" class="w-4 h-4 text-zinc-500"></i>
-                                    <div>
-                                        <div class="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Location</div>
-                                        <div class="text-xs text-white">28.6139° N, 77.2090° E</div>
-                                    </div>
+                        <!-- Greeting -->
+                        <div class="mt-4">
+                            <h2 class="text-2xl font-bold text-white">Hi, Priya 👋</h2>
+                            <p class="text-slate-400 text-sm mt-1">You are safe and connected.</p>
+                        </div>
+
+                        <!-- Info Cards -->
+                        <div class="space-y-3">
+                            <div class="bg-[#141414] border border-white/[0.05] p-4 rounded-2xl flex items-center gap-4 shadow-lg">
+                                <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-400">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
                                 </div>
-                                <div class="bg-white/[0.02] border border-white/5 p-3 rounded-lg flex items-center gap-3">
-                                    <i data-lucide="users" class="w-4 h-4 text-zinc-500"></i>
-                                    <div>
-                                        <div class="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">Guardians Active</div>
-                                        <div class="text-xs text-white">4 Connected</div>
-                                    </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-white">Current Location</div>
+                                    <div class="text-xs text-slate-400 mt-0.5">Shared only with Family</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#141414] border border-white/[0.05] p-4 rounded-2xl flex items-center gap-4 shadow-lg">
+                                <div class="w-10 h-10 rounded-full bg-accent-500/20 flex items-center justify-center text-accent-400">
+                                    <i data-lucide="users" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-semibold text-white">Trusted Circle</div>
+                                    <div class="text-xs text-slate-400 mt-0.5">Mom & Rahul are active</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Main Radar / SOS -->
-                        <div class="md:col-span-2 p-8 bg-[#09090b] border-l border-white/5 rounded-br-[1.2rem] flex items-center justify-center relative overflow-hidden">
-                            <!-- Radar rings -->
-                            <div class="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
-                                <div class="w-64 h-64 rounded-full border border-brand-500/20"></div>
-                                <div class="w-96 h-96 rounded-full border border-brand-500/10 absolute"></div>
-                                <div class="w-[30rem] h-[30rem] rounded-full border border-brand-500/5 absolute"></div>
+                        <!-- Main SOS Button -->
+                        <div class="flex-1 flex flex-col items-center justify-center mt-4">
+                            <!-- Subtle radar rings -->
+                            <div class="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none mt-20">
+                                <div class="w-48 h-48 rounded-full border border-rose-500/20"></div>
+                                <div class="w-64 h-64 rounded-full border border-rose-500/10 absolute"></div>
                             </div>
 
-                            <!-- SOS Core -->
                             <div class="relative z-10 flex flex-col items-center">
-                                <div class="w-32 h-32 rounded-full bg-brand-500/5 border border-brand-500/20 flex items-center justify-center relative cursor-pointer group">
-                                    <div class="absolute inset-0 rounded-full bg-brand-500 blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-[0_0_30px_rgba(244,63,94,0.3)]">
-                                        <span class="font-black text-xl tracking-widest text-white">SOS</span>
+                                <div class="w-36 h-36 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center relative cursor-pointer group hover:bg-rose-500/20 transition-all duration-300">
+                                    <div class="absolute inset-0 rounded-full bg-rose-500 blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                                    <div class="w-28 h-28 rounded-full bg-gradient-to-br from-rose-500 to-rose-700 flex flex-col items-center justify-center shadow-[0_0_40px_rgba(244,63,94,0.5)] relative overflow-hidden transform group-active:scale-95 transition-transform">
+                                        <i data-lucide="alert-triangle" class="w-8 h-8 text-white mb-1"></i>
+                                        <span class="font-bold text-lg tracking-wider text-white">SOS</span>
                                     </div>
                                 </div>
-                                <p class="mt-4 text-xs font-mono text-zinc-500 uppercase tracking-widest">Hold to initialize override</p>
+                                <p class="mt-6 text-sm font-medium text-slate-400 text-center">Press & hold for 2 seconds<br>to alert your family.</p>
                             </div>
                         </div>
+
                     </div>
+                    
+                    <!-- Bottom Nav Line -->
+                    <div class="h-1 w-1/3 bg-white/20 mx-auto rounded-full mb-4 z-10 relative"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Banner -->
-    <section class="border-y border-white/5 bg-white/[0.005] py-8 overflow-hidden flex items-center">
-        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/5 text-center">
+    <!-- Stats Banner (Translated to Human Benefits) -->
+    <section class="border-y border-white/[0.05] bg-[#0A0A0A] py-10 overflow-hidden flex items-center">
+        <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/[0.05]">
             <div class="reveal">
-                <div class="text-3xl font-bold text-white tracking-tight">100<span class="text-brand-500">ms</span></div>
-                <div class="text-xs text-zinc-500 font-mono mt-1">Alert Latency</div>
+                <div class="text-3xl md:text-4xl font-bold text-white tracking-tight">Instant</div>
+                <div class="text-sm text-slate-400 mt-2 font-medium">SOS Alerts to Family</div>
             </div>
             <div class="reveal" style="transition-delay: 50ms;">
-                <div class="text-3xl font-bold text-white tracking-tight">AES<span class="text-accent-500">-256</span></div>
-                <div class="text-xs text-zinc-500 font-mono mt-1">E2E Encryption</div>
+                <div class="text-3xl md:text-4xl font-bold text-white tracking-tight">100<span class="text-brand-500">%</span></div>
+                <div class="text-sm text-slate-400 mt-2 font-medium">Private & Un-tracked</div>
             </div>
             <div class="reveal" style="transition-delay: 100ms;">
-                <div class="text-3xl font-bold text-white tracking-tight">99.9<span class="text-brand-500">%</span></div>
-                <div class="text-xs text-zinc-500 font-mono mt-1">Uptime SLA</div>
+                <div class="text-3xl md:text-4xl font-bold text-white tracking-tight">24/7</div>
+                <div class="text-sm text-slate-400 mt-2 font-medium">Active Community</div>
             </div>
             <div class="reveal" style="transition-delay: 150ms;">
-                <div class="text-3xl font-bold text-white tracking-tight">0<span class="text-brand-500">₹</span></div>
-                <div class="text-xs text-zinc-500 font-mono mt-1">Open Source Core</div>
+                <div class="text-3xl md:text-4xl font-bold text-white tracking-tight">Free</div>
+                <div class="text-sm text-slate-400 mt-2 font-medium">Forever for Everyone</div>
             </div>
         </div>
     </section>
 
-    <!-- Bento Grid Features -->
-    <section id="bento" class="py-32 px-6">
+    <!-- Friendly Features (Bento Grid) -->
+    <section id="features" class="py-32 px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">Architecture of Safety.</h2>
-                <p class="text-zinc-400 text-lg">Designed for maximum reliability when seconds count.</p>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">Features that care for you.</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">Designed to be simple and reliable, because in an emergency, you shouldn't have to think twice.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]">
                 
                 <!-- Feature 1: Wide -->
                 <div class="glass-card md:col-span-2 p-8 flex flex-col justify-between relative overflow-hidden group reveal">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl group-hover:bg-brand-500/20 transition-colors"></div>
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl group-hover:bg-rose-500/20 transition-colors"></div>
                     <div class="z-10">
-                        <div class="w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] flex items-center justify-center mb-4">
-                            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500/20 flex items-center justify-center mb-6 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.2)]">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Instantaneous Override</h3>
-                        <p class="text-zinc-400 text-sm max-w-sm">Trigger alerts directly from your lock screen or hardware buttons. Bypasses standard OS limitations for immediate broadcast.</p>
-                    </div>
-                    <!-- Decorative mini UI -->
-                    <div class="mt-6 flex items-center gap-2 bg-[#121214] p-3 rounded-lg border border-white/5 w-fit z-10">
-                        <div class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></div>
-                        <span class="text-xs font-mono text-zinc-400">Trigger_Event_Fired</span>
+                        <h3 class="text-2xl font-bold text-white mb-3">One-Tap Emergency Alert</h3>
+                        <p class="text-slate-300 text-base max-w-md leading-relaxed">If you feel unsafe, simply press the SOS button. Your exact location, battery level, and an audio snippet are instantly sent to your trusted family members and local authorities.</p>
                     </div>
                 </div>
 
                 <!-- Feature 2: Small -->
                 <div class="glass-card p-8 flex flex-col justify-between relative overflow-hidden group reveal" style="transition-delay: 100ms;">
-                    <div>
-                        <div class="w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] flex items-center justify-center mb-4">
-                            <i data-lucide="lock" class="w-5 h-5 text-white"></i>
+                    <div class="absolute bottom-0 right-0 w-40 h-40 bg-brand-500/10 rounded-full blur-2xl"></div>
+                    <div class="z-10">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-500/20 flex items-center justify-center mb-6 text-brand-400">
+                            <i data-lucide="map" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Zero-Knowledge</h3>
-                        <p class="text-zinc-400 text-sm">Location data is client-side encrypted. We literally cannot see where you are.</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Verified Safe Routes</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">Instead of the fastest route, we guide you through well-lit, busy streets verified by other women in the community.</p>
                     </div>
                 </div>
 
                 <!-- Feature 3: Small -->
                 <div class="glass-card p-8 flex flex-col justify-between relative overflow-hidden group reveal" style="transition-delay: 200ms;">
-                    <div>
-                        <div class="w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] flex items-center justify-center mb-4">
-                            <i data-lucide="map" class="w-5 h-5 text-white"></i>
+                    <div class="absolute top-0 left-0 w-40 h-40 bg-slate-500/10 rounded-full blur-2xl"></div>
+                    <div class="z-10">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center mb-6 text-slate-300 border border-white/10">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">SafeRoute API</h3>
-                        <p class="text-zinc-400 text-sm">Algorithmic routing prioritizing well-lit, verified corridors over speed.</p>
+                        <h3 class="text-xl font-bold text-white mb-3">Private by Design</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">Your location is yours. We don't track you in the background or sell your data. Location is shared only when YOU choose to.</p>
                     </div>
                 </div>
 
                 <!-- Feature 4: Wide -->
                 <div class="glass-card md:col-span-2 p-8 flex flex-col justify-between relative overflow-hidden group reveal" style="transition-delay: 300ms;">
-                    <div class="absolute bottom-0 right-0 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl group-hover:bg-accent-500/20 transition-colors"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl group-hover:bg-accent-500/20 transition-colors"></div>
                     <div class="z-10">
-                        <div class="w-10 h-10 rounded-full border border-white/5 bg-white/[0.02] flex items-center justify-center mb-4">
-                            <i data-lucide="network" class="w-5 h-5 text-white"></i>
+                        <div class="w-12 h-12 rounded-2xl bg-accent-500/20 flex items-center justify-center mb-6 text-accent-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Guardian Mesh Network</h3>
-                        <p class="text-zinc-400 text-sm max-w-md">Creates a decentralized web of trusted contacts. If one node (guardian) is offline, redundant alerts cascade to the next available trusted party automatically.</p>
+                        <h3 class="text-2xl font-bold text-white mb-3">Your Trusted Circle</h3>
+                        <p class="text-slate-300 text-base max-w-md leading-relaxed">Add your parents, siblings, or close friends to your 'Trusted Circle'. They will get notified when you start a late-night commute and when you reach home safely.</p>
                     </div>
                 </div>
 
@@ -381,97 +372,97 @@
         </div>
     </section>
 
-    <!-- Developers / Code Section -->
-    <section id="developers" class="py-20 border-t border-white/5 bg-[#09090b]">
-        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            <div class="reveal">
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Built for transparency.<br><span class="text-zinc-600">Auditable by anyone.</span></h2>
-                <p class="text-zinc-400 mb-8 leading-relaxed">
-                    Security through obscurity is a flaw. Our core routing and encryption protocols are open for public audit. We utilize industry-standard elliptic curve cryptography to ensure your coordinates remain solely yours.
-                </p>
-                <ul class="space-y-4 font-mono text-sm text-zinc-300">
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-500"></i> Open-source client core</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-500"></i> No third-party trackers</li>
-                    <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-brand-500"></i> SOC2 Type II compliance (WIP)</li>
-                </ul>
+    <!-- How It Works (Replaced Developer Code Section with Simple Steps) -->
+    <section id="how-it-works" class="py-24 bg-[#050505] border-y border-white/[0.05]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Simple to use when seconds matter.</h2>
+                <p class="text-slate-400 text-lg">Setup takes less than 2 minutes.</p>
             </div>
-            
-            <!-- Code Block Visual -->
-            <div class="reveal bg-[#050505] border border-white/5 rounded-xl overflow-hidden shadow-2xl">
-                <div class="bg-white/[0.02] border-b border-white/5 px-4 py-2.5 flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full bg-zinc-700/50"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-zinc-700/50"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-zinc-700/50"></div>
-                    <span class="ml-2 font-mono text-xs text-zinc-500">encryption.ts</span>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center reveal">
+                    <div class="w-16 h-16 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-2xl font-bold text-brand-400 mx-auto mb-6 shadow-lg">1</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Download & Signup</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Download the free app and verify your phone number. No hidden charges or complex forms.</p>
                 </div>
-                <div class="p-6 overflow-x-auto font-mono text-xs md:text-sm leading-loose text-zinc-300">
-                    <span class="text-accent-400">import</span> { <span class="text-blue-300">encrypt</span>, <span class="text-blue-300">sign</span> } <span class="text-accent-400">from</span> <span class="text-emerald-400">'@shaktisetu/crypto'</span>;<br><br>
-                    <span class="text-accent-400">export const</span> <span class="text-blue-300">broadcastSOS</span> = <span class="text-accent-400">async</span> (location: Coordinates) => {<br>
-                    &nbsp;&nbsp;<span class="text-zinc-500">// Encrypt payload with Guardian's public keys</span><br>
-                    &nbsp;&nbsp;<span class="text-accent-400">const</span> payload = <span class="text-blue-300">encrypt</span>(location, guardianKeys);<br>
-                    &nbsp;&nbsp;<span class="text-accent-400">const</span> signature = <span class="text-blue-300">sign</span>(payload, userPrivateKey);<br><br>
-                    &nbsp;&nbsp;<span class="text-accent-400">await</span> network.<span class="text-blue-300">dispatch</span>({ payload, signature });<br>
-                    };
+                <!-- Step 2 -->
+                <div class="text-center reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-2xl font-bold text-accent-400 mx-auto mb-6 shadow-lg">2</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Add Your Family</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Select up to 5 close contacts from your phonebook. They will be your primary safety net.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center reveal" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-2xl font-bold text-rose-400 mx-auto mb-6 shadow-lg">3</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Move Fearlessly</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Use SafeRoute for night walks, or keep the app handy. Help is now always just one tap away.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
+    <!-- Friendly Download Section -->
     <section id="download" class="py-32 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brand-500/5 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-500/10 to-transparent pointer-events-none"></div>
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
-            <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-6">Ready to deploy?</h2>
-            <p class="text-zinc-400 text-lg mb-10 max-w-xl mx-auto">
-                Join the network. Secure your routing. Empower your community. The core application is completely free forever.
+            <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.4)] mx-auto mb-8">
+                <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+            </div>
+            
+            <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Join the community today.</h2>
+            <p class="text-slate-300 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+                Empower yourself and the women around you. ShaktiSetu is 100% free forever, because safety is a right, not a luxury.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#" class="btn-glow w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                <a href="#" class="btn-glow w-full sm:w-auto bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
                     <i data-lucide="download" class="w-5 h-5"></i>
-                    Download for Android
-                </a>
-                <a href="#" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-white border border-white/10 hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
-                    <i data-lucide="github" class="w-5 h-5"></i>
-                    View Source
+                    Get the App Free
                 </a>
             </div>
+            <p class="mt-6 text-sm text-slate-500">Available for all Android smartphones.</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 bg-[#09090b] pt-16 pb-8">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div class="col-span-2">
+    <footer class="border-t border-white/[0.05] bg-[#050505] pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
                 <div class="flex items-center gap-2 mb-4">
-                    <i data-lucide="shield-check" class="w-5 h-5 text-brand-500"></i>
-                    <span class="font-bold text-lg tracking-tight text-white">ShaktiSetu</span>
+                    <i data-lucide="shield-check" class="w-6 h-6 text-brand-500"></i>
+                    <span class="font-bold text-xl tracking-tight text-white">ShaktiSetu</span>
                 </div>
-                <p class="text-zinc-500 text-sm max-w-sm font-mono">
-                    Engineering personal safety infrastructure. Decentralized, encrypted, and designed for immediate response.
+                <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+                    A community-driven platform dedicated to making our streets, commutes, and daily lives safer for every woman.
                 </p>
+                <div class="flex gap-4 mt-6">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                </div>
             </div>
             <div>
-                <h4 class="font-bold text-white mb-4">Resources</h4>
-                <ul class="space-y-2 text-sm text-zinc-500">
-                    <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">API Reference</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">GitHub Repository</a></li>
+                <h4 class="font-bold text-white mb-4">Learn More</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-white transition-colors">How it Works</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Safety Tips</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact Support</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 class="font-bold text-white mb-4">Legal</h4>
-                <ul class="space-y-2 text-sm text-zinc-500">
-                    <li><a href="#" class="hover:text-white transition-colors">Privacy Architecture</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Security Audit</a></li>
+            <div id="privacy">
+                <h4 class="font-bold text-white mb-4">Trust & Privacy</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Data Security</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Use</a></li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-6xl mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-600">
-            <p>&copy; 2026 ShaktiSetu Open Core.</p>
-            <div class="flex gap-4">
-                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-emerald-500"></div> All systems operational</span>
-            </div>
+        <div class="max-w-6xl mx-auto px-6 pt-8 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <p>&copy; 2026 ShaktiSetu App. All rights reserved.</p>
+            <p>Made with ❤️ for a safer world.</p>
         </div>
     </footer>
 
@@ -484,14 +475,14 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
                 navbar.classList.add('nav-glass');
-                navbar.classList.remove('bg-transparent');
+                navbar.classList.remove('bg-transparent', 'py-4');
             } else {
                 navbar.classList.remove('nav-glass');
-                navbar.classList.add('bg-transparent');
+                navbar.classList.add('bg-transparent', 'py-4');
             }
         });
 
-        // Scroll Reveal Animation (Intersection Observer)
+        // Scroll Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
         const revealOptions = {
             threshold: 0.1,
